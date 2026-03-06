@@ -1,0 +1,27 @@
+<div class="favorites-container">
+  <h2>Favorites DinoSaurs</h2>
+
+  @if (favDinos().length === 0) {
+    <p>ยังไม่มีไดโนเสาร์ที่บันทึกไว้ ลองกดหัวใจในหน้า detail ดูนะคะ</p>
+  } @else {
+    <div class="carousel">
+      <button class="arrow left" (click)="prev()">&#8249;</button>
+
+      <div class="cards-wrapper">
+        @for (d of visibleDinos(); track $index) {
+          <div
+            class="card"
+            [class.center]="isCenter($index)"
+            [routerLink]="['/dinosaurs', d.name]"
+          >
+            <img [src]="d.image" [alt]="d.name" />
+            <span class="dino-name">{{ d.name }}</span>
+            <span class="heart">❤️</span>
+          </div>
+        }
+      </div>
+
+      <button class="arrow right" (click)="next()">&#8250;</button>
+    </div>
+  }
+</div>

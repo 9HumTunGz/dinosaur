@@ -1,0 +1,58 @@
+/* wrapper */
+body > div {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* card */
+div[style*="border"] {
+  background: #0f172a;
+  border: none !important;
+  border-radius: 18px;
+  padding: 24px !important;
+  margin: 22px auto !important;
+  max-width: 900px;
+
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 26px;
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  div[style*="border"] {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* image */
+div[style*="border"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* title */
+div[style*="border"] h3 {
+  margin: 0 0 8px;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #f9fafb;
+}
+
+/* text */
+div[style*="border"] p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* label */
+div[style*="border"] b {
+  color: #60a5fa;
+  font-weight: 600;
+}

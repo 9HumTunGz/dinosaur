@@ -1,0 +1,31 @@
+.about-container {
+  min-height: 100vh;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Triceratops_liveDB.jpg/1280px-Triceratops_liveDB.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+
+  .content {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    color: white;
+    max-width: 500px;
+    line-height: 1.8;
+
+    p { margin: 0; }
+
+    .credit {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+
+      a {
+        color: #FFD700;
+        text-decoration: none;
+      }
+    }
+  }
+}

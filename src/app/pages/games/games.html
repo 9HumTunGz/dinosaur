@@ -1,0 +1,38 @@
+<div class="games-container">
+
+  @if (isFinished()) {
+    <div class="result">
+      <h2>จบเกม!</h2>
+      <p>คะแนน {{ score() }} / {{ totalRounds }}</p>
+      <button (click)="restart()">เล่นอีกครั้ง</button>
+    </div>
+  } @else if (currentDino()) {
+    <p class="round">ข้อที่ {{ round() }} / {{ totalRounds }}</p>
+
+    <div class="dino-image-box">
+      <img [src]="currentDino().image" [alt]="'?'" />
+    </div>
+
+    <p class="question">ไดโนเสาร์ตัวนี้คือตัวอะไร</p>
+
+    <div class="options">
+      @for (opt of options(); track $index) {
+        <button
+          [class]="getOptionClass(opt)"
+          (click)="select(opt)"
+          [disabled]="isAnswered()"
+        >
+          {{ opt }}
+        </button>
+      }
+    </div>
+
+    @if (isAnswered()) {
+      <p class="feedback" [class.correct]="isCorrect()" [class.wrong]="!isCorrect()">
+        {{ isCorrect() ? '✅ ถูกต้อง!' : '❌ ผิด! คำตอบคือ ' + currentDino().name }}
+      </p>
+      <button class="next-btn" (click)="nextQuestion()">ข้อถัดไป →</button>
+    }
+  }
+
+</div>

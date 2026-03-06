@@ -1,0 +1,54 @@
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <div class="toolbar">
+    <button routerLink="/">Back</button>
+    <input
+      type="text"
+      placeholder="Search dinosaurs..."
+      [(ngModel)]="searchQuery"
+    />
+    <select [(ngModel)]="dietFilter">
+      <option value="">All</option>
+      <option value="herbivore">🌿 กินพืช</option>
+      <option value="carnivore">🥩 กินเนื้อ</option>
+      <option value="omnivore">🌿🥩 กินทั้งคู่</option>
+    </select>
+    <button (click)="showAll.set(!showAll())">
+      {{ showAll() ? 'List' : 'All' }}
+    </button>
+  </div>
+
+  <!-- List mode -->
+  @if (!showAll()) {
+    <div class="dino-list">
+      @for (d of filteredDinos(); track $index) {
+        <a [routerLink]="['/dinosaurs', d.name]" class="dino-name-item">
+          {{ d.name }}
+        </a>
+      }
+      @if (filteredDinos().length === 0) {
+        <p>ไม่พบไดโนเสาร์ที่ค้นหา</p>
+      }
+    </div>
+  }
+
+  <!-- All mode -->
+  @if (showAll()) {
+    <div class="dino-grid">
+      @for (d of filteredDinos(); track $index) {
+        <div class="dino-card">
+          <img [src]="d.image" [alt]="d.name" />
+          <h3>{{ d.name }}</h3>
+          <p>{{ d.period }} · {{ d.diet }} · {{ d.region }}</p>
+          <p><b>Weight:</b> {{ d.weight }}</p>
+          <p><b>Height:</b> {{ d.height }}</p>
+          <p><b>Length:</b> {{ d.length }}</p>
+          <p><b>Existed:</b> {{ d.existed }}</p>
+          <p><b>Type:</b> {{ d.type }}</p>
+          <p>{{ d.description }}</p>
+        </div>
+      }
+    </div>
+  }
+}

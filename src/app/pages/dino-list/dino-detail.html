@@ -1,0 +1,22 @@
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (dino()) {
+  <div class="detail-container">
+    <button routerLink="/dinosaurs">Back</button>
+
+    <h2>{{ dino().name }}</h2>
+    <img [src]="dino().image" [alt]="dino().name" />
+
+    <button (click)="toggleFav()">
+      {{ isFav() ? '❤️' : '🤍' }} {{ isFav() ? 'Saved' : 'Add to Favorites' }}
+    </button>
+
+    <p>{{ dino().period }} · {{ dino().diet }} · {{ dino().region }}</p>
+    <p><b>Weight:</b> {{ dino().weight }}</p>
+    <p><b>Height:</b> {{ dino().height }}</p>
+    <p><b>Length:</b> {{ dino().length }}</p>
+    <p><b>Existed:</b> {{ dino().existed }}</p>
+    <p><b>Type:</b> {{ dino().type }}</p>
+    <p>{{ dino().description }}</p>
+  </div>
+}
